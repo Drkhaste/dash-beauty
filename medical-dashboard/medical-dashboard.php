@@ -35,6 +35,8 @@ class Medical_Dashboard_Pro {
         add_action( 'admin_head',              [ $this, 'inject_inline_svg_icons' ] );
         add_action( 'wp_dashboard_setup',      [ $this, 'customize_dashboard_widgets' ] );
         add_filter( 'admin_footer_text',       [ $this, 'custom_footer_text' ] );
+        add_action( 'admin_menu',              [ $this, 'add_settings_menu' ] );
+        add_action( 'admin_init',              [ $this, 'register_settings' ] );
     }
 
     public function enqueue_styles( $hook ) {
@@ -46,6 +48,11 @@ class Medical_Dashboard_Pro {
         );
 
         wp_add_inline_style( 'medical-dashboard-pro', $this->get_dynamic_css() );
+
+        $custom_css = get_option( 'mdp_custom_css' );
+        if ( ! empty( $custom_css ) ) {
+            wp_add_inline_style( 'medical-dashboard-pro', $custom_css );
+        }
     }
 
     public function enqueue_login_styles() {
@@ -74,6 +81,46 @@ class Medical_Dashboard_Pro {
 
     public function custom_footer_text( $text ) {
         return '<span style="font-family: inherit; direction: rtl; unicode-bidi: embed;">❤️ طراحی‌شده با دقت پزشکی &mdash; Medical Dashboard Pro</span>';
+    }
+
+    public function add_settings_menu() {
+        add_menu_page(
+            'تنظیمات مدیکال داشبورد',
+            'مدیکال داشبورد',
+            'manage_options',
+            'medical-dashboard-settings',
+            [ $this, 'render_settings_page' ],
+            'dashicons-heart',
+            60
+        );
+    }
+
+    public function register_settings() {
+        register_setting( 'mdp_settings_group', 'mdp_custom_css' );
+    }
+
+    public function render_settings_page() {
+        ?>
+        <div class="wrap mdp-settings-wrap" style="direction: rtl;">
+            <h1>تنظیمات مدیکال داشبورد</h1>
+            <form method="post" action="options.php">
+                <?php
+                settings_fields( 'mdp_settings_group' );
+                do_settings_sections( 'mdp_settings_group' );
+                ?>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">سی‌اس‌اس سفارشی (Custom CSS)</th>
+                        <td>
+                            <textarea name="mdp_custom_css" rows="15" cols="70" style="width: 100%; font-family: monospace; direction: ltr;"><?php echo esc_textarea( get_option( 'mdp_custom_css' ) ); ?></textarea>
+                            <p class="description">کدهای CSS خود را اینجا وارد کنید تا در داشبورد اعمال شوند.</p>
+                        </td>
+                    </tr>
+                </table>
+                <?php submit_button('ذخیره تنظیمات'); ?>
+            </form>
+        </div>
+        <?php
     }
 
     private function get_dynamic_css() {
