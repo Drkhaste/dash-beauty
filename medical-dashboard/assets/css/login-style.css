@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
 /* ========================================================
    Medical Dashboard Pro — Login Page Stylesheet
    تم سبز پزشکی | صفحه ورود مدرن | راست‌چین
@@ -27,9 +29,9 @@ html {
 }
 
 body.login {
-    background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 35%, #d1fae5 70%, #a7f3d0 100%) !important;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%) !important;
     direction: rtl !important;
-    font-family: inherit !important;
+    font-family: 'Vazirmatn', sans-serif !important;
     min-height: 100vh;
     display: flex !important;
     flex-direction: column !important;
@@ -37,6 +39,10 @@ body.login {
     justify-content: center !important;
     position: relative !important;
     overflow: hidden !important;
+}
+
+body.login * {
+    font-family: 'Vazirmatn', sans-serif !important;
 }
 
 /* Decorative circles */
@@ -78,24 +84,25 @@ body.login::after {
     gap: 10px !important;
     text-indent: 0 !important;
     text-decoration: none !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 20px !important;
 }
 
 #login h1 a::before {
     content: '⚕';
-    font-size: 48px;
+    font-size: 64px;
     line-height: 1;
     display: block;
-    filter: drop-shadow(0 4px 12px rgba(16,185,129,0.40));
+    color: var(--mdp-primary);
+    filter: drop-shadow(0 4px 12px rgba(16,185,129,0.25));
 }
 
 #login h1 a::after {
-    content: 'Medical Dashboard Pro';
-    font-size: 17px;
+    content: 'مدیکال داشبورد';
+    font-size: 24px;
     font-weight: 700;
     color: var(--mdp-primary-dd);
-    letter-spacing: 0.02em;
     display: block;
+    margin-top: 10px;
 }
 
 /* Login form card */
