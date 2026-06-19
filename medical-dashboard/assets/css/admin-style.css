@@ -1,0 +1,1098 @@
+/* ========================================================
+   Medical Dashboard Pro — Admin Stylesheet
+   تم سبز پزشکی | راست‌چین | مدرن و تمیز
+   ======================================================== */
+
+/* -------------------------------------------------------
+   1. CSS Custom Properties (Design Tokens)
+------------------------------------------------------- */
+:root {
+    --mdp-primary:       #10b981;
+    --mdp-primary-d:     #059669;
+    --mdp-primary-dd:    #047857;
+    --mdp-primary-l:     #d1fae5;
+    --mdp-primary-ll:    #ecfdf5;
+    --mdp-accent:        #06d6a0;
+    --mdp-accent-blue:   #0ea5e9;
+
+    --mdp-gray-50:       #f8fafc;
+    --mdp-gray-100:      #f1f5f9;
+    --mdp-gray-200:      #e2e8f0;
+    --mdp-gray-300:      #cbd5e1;
+    --mdp-gray-400:      #94a3b8;
+    --mdp-gray-500:      #64748b;
+    --mdp-gray-600:      #475569;
+    --mdp-gray-700:      #334155;
+    --mdp-gray-800:      #1e293b;
+    --mdp-gray-900:      #0f172a;
+
+    --mdp-white:         #ffffff;
+    --mdp-danger:        #ef4444;
+    --mdp-warning:       #f59e0b;
+    --mdp-info:          #3b82f6;
+    --mdp-success:       #10b981;
+
+    --mdp-radius-sm:     6px;
+    --mdp-radius:        12px;
+    --mdp-radius-md:     16px;
+    --mdp-radius-lg:     20px;
+    --mdp-radius-xl:     28px;
+    --mdp-radius-full:   9999px;
+
+    --mdp-shadow-xs:     0 1px 2px rgba(0,0,0,0.05);
+    --mdp-shadow-sm:     0 2px 8px rgba(0,0,0,0.07);
+    --mdp-shadow:        0 4px 16px rgba(16,185,129,0.10), 0 1px 4px rgba(0,0,0,0.06);
+    --mdp-shadow-md:     0 8px 32px rgba(16,185,129,0.14), 0 2px 8px rgba(0,0,0,0.08);
+    --mdp-shadow-lg:     0 16px 48px rgba(16,185,129,0.16), 0 4px 16px rgba(0,0,0,0.10);
+    --mdp-shadow-focus:  0 0 0 3px rgba(16,185,129,0.30);
+
+    --mdp-transition:    all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    --mdp-transition-fast: all 0.14s ease;
+
+    --mdp-sidebar-w:     260px;
+    --mdp-font:          inherit;
+}
+
+/* -------------------------------------------------------
+   2. Global Reset & Base
+------------------------------------------------------- */
+#wpcontent,
+#wpbody,
+#wpbody-content,
+.wrap,
+#wpfooter,
+#wpadminbar,
+#adminmenu,
+#adminmenuback,
+#adminmenuwrap {
+    direction: rtl !important;
+    unicode-bidi: embed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.wp-admin {
+    background: var(--mdp-gray-50) !important;
+    color: var(--mdp-gray-800) !important;
+    font-family: var(--mdp-font) !important;
+    direction: rtl !important;
+}
+
+/* -------------------------------------------------------
+   3. Admin Bar (Top Bar)
+------------------------------------------------------- */
+#wpadminbar {
+    background: linear-gradient(90deg, var(--mdp-primary-dd) 0%, var(--mdp-primary-d) 50%, var(--mdp-primary) 100%) !important;
+    box-shadow: 0 2px 16px rgba(16,185,129,0.25) !important;
+    border-bottom: none !important;
+}
+
+#wpadminbar * {
+    direction: rtl;
+}
+
+#wpadminbar .ab-top-menu > li > .ab-item,
+#wpadminbar .ab-top-menu > li > a {
+    color: rgba(255,255,255,0.92) !important;
+    font-size: 13px !important;
+    letter-spacing: 0.01em;
+    transition: var(--mdp-transition-fast) !important;
+}
+
+#wpadminbar .ab-top-menu > li:hover > .ab-item,
+#wpadminbar .ab-top-menu > li.hover > .ab-item {
+    background: rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border-radius: var(--mdp-radius-sm);
+}
+
+#wpadminbar #wp-admin-bar-root-default > li > .ab-item:before,
+#wpadminbar .dashicons {
+    color: rgba(255,255,255,0.85) !important;
+}
+
+#wpadminbar #wp-admin-bar-site-name > .ab-item {
+    font-weight: 700 !important;
+    font-size: 14px !important;
+}
+
+#wpadminbar .ab-submenu {
+    background: var(--mdp-white) !important;
+    border-radius: var(--mdp-radius) !important;
+    box-shadow: var(--mdp-shadow-lg) !important;
+    border: 1px solid var(--mdp-gray-200) !important;
+    padding: 6px !important;
+    margin-top: 4px !important;
+}
+
+#wpadminbar .ab-submenu .ab-item {
+    color: var(--mdp-gray-700) !important;
+    border-radius: var(--mdp-radius-sm) !important;
+    padding: 8px 14px !important;
+    transition: var(--mdp-transition-fast) !important;
+}
+
+#wpadminbar .ab-submenu .ab-item:hover {
+    background: var(--mdp-primary-ll) !important;
+    color: var(--mdp-primary-d) !important;
+}
+
+/* -------------------------------------------------------
+   4. Sidebar Menu
+------------------------------------------------------- */
+#adminmenuback,
+#adminmenuwrap {
+    background: var(--mdp-white) !important;
+    border-left: 1px solid var(--mdp-gray-200) !important;
+    border-right: none !important;
+    box-shadow: 2px 0 20px rgba(0,0,0,0.06) !important;
+    width: var(--mdp-sidebar-w) !important;
+}
+
+#adminmenu {
+    width: var(--mdp-sidebar-w) !important;
+    padding: 12px 10px !important;
+    margin: 0 !important;
+}
+
+#adminmenu a {
+    color: var(--mdp-gray-600) !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    transition: var(--mdp-transition) !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+#adminmenu li {
+    margin-bottom: 2px !important;
+}
+
+#adminmenu li a {
+    border-radius: var(--mdp-radius) !important;
+    padding: 9px 14px !important;
+}
+
+#adminmenu li:hover > a,
+#adminmenu li.wp-has-current-submenu > a,
+#adminmenu li.current > a {
+    background: var(--mdp-primary-ll) !important;
+    color: var(--mdp-primary-d) !important;
+}
+
+#adminmenu li.current > a,
+#adminmenu .wp-has-current-submenu > a.wp-has-current-submenu {
+    background: linear-gradient(135deg, var(--mdp-primary-ll) 0%, #b7f7df 100%) !important;
+    color: var(--mdp-primary-dd) !important;
+    font-weight: 700 !important;
+    box-shadow: var(--mdp-shadow-sm) !important;
+}
+
+#adminmenu .wp-menu-image:before,
+#adminmenu .dashicons:before,
+#adminmenu .menu-icon-generic:before {
+    color: var(--mdp-gray-400) !important;
+    transition: var(--mdp-transition-fast) !important;
+    font-size: 18px !important;
+    line-height: 36px !important;
+}
+
+#adminmenu li:hover .wp-menu-image:before,
+#adminmenu li.current .wp-menu-image:before,
+#adminmenu li.wp-has-current-submenu .wp-menu-image:before {
+    color: var(--mdp-primary-d) !important;
+}
+
+#adminmenu .wp-submenu {
+    background: var(--mdp-gray-50) !important;
+    border-radius: var(--mdp-radius) !important;
+    margin: 4px 0 4px 8px !important;
+    padding: 6px !important;
+    border: 1px solid var(--mdp-gray-200) !important;
+}
+
+#adminmenu .wp-submenu li a {
+    border-radius: var(--mdp-radius-sm) !important;
+    padding: 7px 12px 7px 12px !important;
+    font-size: 13px !important;
+    color: var(--mdp-gray-500) !important;
+}
+
+#adminmenu .wp-submenu li a:hover,
+#adminmenu .wp-submenu li.current a {
+    background: var(--mdp-primary-ll) !important;
+    color: var(--mdp-primary-d) !important;
+}
+
+#adminmenu .wp-menu-badge .awaiting-mod,
+#adminmenu .wp-menu-badge .update-plugins {
+    background: var(--mdp-primary) !important;
+    border-radius: var(--mdp-radius-full) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    min-width: 20px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    padding: 0 6px !important;
+}
+
+/* Sidebar separator */
+#adminmenu .wp-menu-separator {
+    background: none !important;
+    border-top: 1px solid var(--mdp-gray-200) !important;
+    margin: 8px 12px !important;
+    height: 1px !important;
+}
+
+/* -------------------------------------------------------
+   5. Main Content Area
+------------------------------------------------------- */
+#wpcontent {
+    background: var(--mdp-gray-50) !important;
+    margin-right: var(--mdp-sidebar-w) !important;
+    margin-left: 0 !important;
+    padding: 24px !important;
+    min-height: 100vh;
+}
+
+#wpbody-content {
+    padding-bottom: 40px !important;
+    direction: rtl !important;
+}
+
+.wrap {
+    direction: rtl !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+
+.wrap h1,
+.wrap h1.wp-heading-inline {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: var(--mdp-gray-800) !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 2px solid var(--mdp-primary-l) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.wrap h2 {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: var(--mdp-gray-700) !important;
+    margin-top: 24px !important;
+}
+
+/* -------------------------------------------------------
+   6. Postboxes / Metaboxes / Cards
+------------------------------------------------------- */
+.postbox,
+.metabox-holder .postbox,
+#dashboard-widgets .postbox,
+.stuffbox {
+    background: var(--mdp-white) !important;
+    border: 1px solid var(--mdp-gray-200) !important;
+    border-radius: var(--mdp-radius-md) !important;
+    box-shadow: var(--mdp-shadow-sm) !important;
+    transition: var(--mdp-transition) !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+}
+
+.postbox:hover {
+    box-shadow: var(--mdp-shadow-md) !important;
+    transform: translateY(-1px) !important;
+}
+
+.postbox .postbox-header,
+.postbox h2,
+.postbox .hndle {
+    background: linear-gradient(135deg, var(--mdp-primary-ll) 0%, #f0fdf8 100%) !important;
+    border-bottom: 1px solid var(--mdp-primary-l) !important;
+    padding: 14px 18px !important;
+    cursor: pointer !important;
+    border-radius: var(--mdp-radius-md) var(--mdp-radius-md) 0 0 !important;
+    direction: rtl !important;
+}
+
+.postbox h2 .hndle-text,
+.postbox .hndle h2,
+.postbox h2 {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--mdp-primary-dd) !important;
+    margin: 0 !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.postbox .inside {
+    padding: 18px !important;
+    direction: rtl !important;
+}
+
+.postbox .handlediv,
+.postbox .toggle-indicator {
+    color: var(--mdp-primary-d) !important;
+}
+
+/* -------------------------------------------------------
+   7. Buttons
+------------------------------------------------------- */
+.button,
+.button-primary,
+.button-secondary,
+.button-hero,
+.button-large,
+.button-small,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+a.button {
+    border-radius: var(--mdp-radius-full) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 8px 22px !important;
+    line-height: 1.5 !important;
+    transition: var(--mdp-transition) !important;
+    cursor: pointer !important;
+    letter-spacing: 0.02em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    direction: rtl !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.button-primary,
+input[type="submit"].button-primary {
+    background: linear-gradient(135deg, var(--mdp-primary) 0%, var(--mdp-primary-d) 100%) !important;
+    border: none !important;
+    color: #fff !important;
+    box-shadow: 0 2px 10px rgba(16,185,129,0.35) !important;
+    text-shadow: none !important;
+}
+
+.button-primary:hover,
+input[type="submit"].button-primary:hover {
+    background: linear-gradient(135deg, var(--mdp-primary-d) 0%, var(--mdp-primary-dd) 100%) !important;
+    box-shadow: 0 4px 18px rgba(16,185,129,0.50) !important;
+    transform: translateY(-1px) !important;
+    color: #fff !important;
+}
+
+.button-primary:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 1px 6px rgba(16,185,129,0.30) !important;
+}
+
+.button-primary:focus {
+    outline: none !important;
+    box-shadow: var(--mdp-shadow-focus) !important;
+}
+
+.button,
+.button-secondary {
+    background: var(--mdp-white) !important;
+    border: 1.5px solid var(--mdp-gray-300) !important;
+    color: var(--mdp-gray-700) !important;
+    box-shadow: var(--mdp-shadow-xs) !important;
+}
+
+.button:hover,
+.button-secondary:hover {
+    background: var(--mdp-gray-50) !important;
+    border-color: var(--mdp-primary) !important;
+    color: var(--mdp-primary-d) !important;
+    box-shadow: 0 2px 8px rgba(16,185,129,0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+.button:focus,
+.button-secondary:focus {
+    outline: none !important;
+    box-shadow: var(--mdp-shadow-focus) !important;
+    border-color: var(--mdp-primary) !important;
+}
+
+/* Danger button */
+.button.delete,
+.button-link-delete,
+a.submitdelete,
+span.delete a {
+    color: var(--mdp-danger) !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: var(--mdp-radius-sm) !important;
+    padding: 4px 10px !important;
+}
+
+.button.delete:hover,
+.button-link-delete:hover,
+a.submitdelete:hover {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    transform: none !important;
+}
+
+/* -------------------------------------------------------
+   8. Input Fields, Textareas, Select
+------------------------------------------------------- */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+textarea,
+select,
+.regular-text,
+.large-text,
+.small-text,
+.wp-editor-container {
+    border: 1.5px solid var(--mdp-gray-300) !important;
+    border-radius: var(--mdp-radius) !important;
+    background: var(--mdp-white) !important;
+    color: var(--mdp-gray-800) !important;
+    font-family: var(--mdp-font) !important;
+    font-size: 13px !important;
+    padding: 9px 14px !important;
+    line-height: 1.5 !important;
+    transition: var(--mdp-transition) !important;
+    box-shadow: var(--mdp-shadow-xs) !important;
+    direction: rtl !important;
+    text-align: right !important;
+    width: auto !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--mdp-primary) !important;
+    outline: none !important;
+    box-shadow: var(--mdp-shadow-focus) !important;
+    background: var(--mdp-white) !important;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--mdp-gray-400) !important;
+}
+
+textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+}
+
+select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: left 12px center !important;
+    padding-left: 36px !important;
+    cursor: pointer !important;
+}
+
+/* Checkbox & Radio */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--mdp-primary) !important;
+    width: 16px !important;
+    height: 16px !important;
+    cursor: pointer !important;
+}
+
+/* Search inputs */
+.search-box input[type="search"],
+#post-search-input {
+    border-radius: var(--mdp-radius-full) !important;
+    padding-right: 16px !important;
+    padding-left: 40px !important;
+}
+
+/* -------------------------------------------------------
+   9. Tables (WP_List_Table)
+------------------------------------------------------- */
+.wp-list-table,
+table.widefat {
+    border-radius: var(--mdp-radius-md) !important;
+    border: 1px solid var(--mdp-gray-200) !important;
+    overflow: hidden !important;
+    box-shadow: var(--mdp-shadow-sm) !important;
+    direction: rtl !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+}
+
+.wp-list-table thead th,
+.wp-list-table thead td,
+table.widefat thead th {
+    background: linear-gradient(135deg, var(--mdp-primary-ll) 0%, #f0fdf8 100%) !important;
+    color: var(--mdp-primary-dd) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    padding: 12px 16px !important;
+    border-bottom: 2px solid var(--mdp-primary-l) !important;
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+.wp-list-table tbody tr,
+table.widefat tbody tr {
+    transition: var(--mdp-transition-fast) !important;
+}
+
+.wp-list-table tbody tr:hover,
+table.widefat tbody tr:hover {
+    background: var(--mdp-primary-ll) !important;
+}
+
+.wp-list-table tbody td,
+table.widefat tbody td {
+    border-bottom: 1px solid var(--mdp-gray-100) !important;
+    padding: 12px 16px !important;
+    color: var(--mdp-gray-700) !important;
+    font-size: 13px !important;
+    vertical-align: middle !important;
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+.wp-list-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Row actions */
+.row-actions {
+    direction: rtl !important;
+}
+
+.row-actions span {
+    padding: 0 !important;
+    margin-left: 6px !important;
+    margin-right: 0 !important;
+}
+
+.row-actions span:not(:first-child) {
+    border-left: 1px solid var(--mdp-gray-300) !important;
+    border-right: none !important;
+    padding-left: 6px !important;
+}
+
+/* -------------------------------------------------------
+   10. Pagination
+------------------------------------------------------- */
+.tablenav .tablenav-pages {
+    direction: rtl !important;
+}
+
+.tablenav-pages .page-numbers,
+.tablenav-pages .prev-page,
+.tablenav-pages .next-page,
+.tablenav-pages .last-page,
+.tablenav-pages .first-page {
+    border-radius: var(--mdp-radius-sm) !important;
+    border: 1.5px solid var(--mdp-gray-300) !important;
+    background: var(--mdp-white) !important;
+    color: var(--mdp-gray-700) !important;
+    padding: 6px 10px !important;
+    transition: var(--mdp-transition-fast) !important;
+    text-decoration: none !important;
+}
+
+.tablenav-pages .page-numbers:hover,
+.tablenav-pages .prev-page:hover,
+.tablenav-pages .next-page:hover {
+    border-color: var(--mdp-primary) !important;
+    color: var(--mdp-primary-d) !important;
+    background: var(--mdp-primary-ll) !important;
+}
+
+.tablenav-pages .page-numbers.current {
+    background: var(--mdp-primary) !important;
+    border-color: var(--mdp-primary) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(16,185,129,0.30) !important;
+}
+
+/* -------------------------------------------------------
+   11. Notices / Alerts
+------------------------------------------------------- */
+.notice,
+div.updated,
+div.error,
+div.notice-success,
+div.notice-warning,
+div.notice-error,
+div.notice-info {
+    border-radius: var(--mdp-radius) !important;
+    border-left: none !important;
+    border-right: 4px solid var(--mdp-primary) !important;
+    padding: 14px 18px !important;
+    box-shadow: var(--mdp-shadow-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    direction: rtl !important;
+    margin-bottom: 16px !important;
+    font-size: 13px !important;
+}
+
+.notice-success,
+div.updated {
+    background: var(--mdp-primary-ll) !important;
+    border-right-color: var(--mdp-primary) !important;
+    color: var(--mdp-primary-dd) !important;
+}
+
+.notice-error,
+div.error {
+    background: #fef2f2 !important;
+    border-right-color: var(--mdp-danger) !important;
+    color: #991b1b !important;
+}
+
+.notice-warning {
+    background: #fffbeb !important;
+    border-right-color: var(--mdp-warning) !important;
+    color: #92400e !important;
+}
+
+.notice-info {
+    background: #eff6ff !important;
+    border-right-color: var(--mdp-info) !important;
+    color: #1e40af !important;
+}
+
+.notice .notice-dismiss {
+    position: absolute !important;
+    left: 14px !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: currentColor !important;
+    opacity: 0.5 !important;
+    transition: var(--mdp-transition-fast) !important;
+}
+
+.notice .notice-dismiss:hover {
+    opacity: 1 !important;
+}
+
+/* -------------------------------------------------------
+   12. Dashboard Widgets
+------------------------------------------------------- */
+#dashboard-widgets-wrap {
+    direction: rtl !important;
+}
+
+#dashboard-widgets .postbox-container {
+    float: right !important;
+}
+
+#dashboard-widgets .postbox-container:last-child {
+    float: left !important;
+}
+
+/* Stats / At a Glance */
+#dashboard_right_now .main {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+#dashboard_right_now ul {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+#dashboard_right_now ul li a:before {
+    float: right !important;
+    margin-left: 6px !important;
+    margin-right: 0 !important;
+}
+
+/* Activity widget */
+#dashboard_activity .inside {
+    direction: rtl !important;
+}
+
+/* -------------------------------------------------------
+   13. Form Tables (Settings Pages)
+------------------------------------------------------- */
+.form-table {
+    direction: rtl !important;
+    width: 100% !important;
+}
+
+.form-table td,
+.form-table th {
+    padding: 14px 10px !important;
+    vertical-align: top !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.form-table th {
+    font-weight: 600 !important;
+    color: var(--mdp-gray-700) !important;
+    font-size: 13px !important;
+    padding-left: 30px !important;
+    width: 220px !important;
+}
+
+.form-table td p.description {
+    color: var(--mdp-gray-400) !important;
+    font-size: 12px !important;
+    margin-top: 6px !important;
+    direction: rtl !important;
+}
+
+/* -------------------------------------------------------
+   14. Nav Tabs
+------------------------------------------------------- */
+.nav-tab-wrapper,
+.wp-filter {
+    border-bottom: 2px solid var(--mdp-gray-200) !important;
+    margin-bottom: 24px !important;
+    direction: rtl !important;
+    display: flex !important;
+    gap: 6px !important;
+    padding-bottom: 0 !important;
+}
+
+.nav-tab {
+    border-radius: var(--mdp-radius) var(--mdp-radius) 0 0 !important;
+    border: 1.5px solid var(--mdp-gray-200) !important;
+    border-bottom: none !important;
+    background: var(--mdp-gray-100) !important;
+    color: var(--mdp-gray-600) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 10px 18px !important;
+    transition: var(--mdp-transition-fast) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.nav-tab:hover {
+    background: var(--mdp-primary-ll) !important;
+    color: var(--mdp-primary-d) !important;
+    border-color: var(--mdp-primary-l) !important;
+}
+
+.nav-tab-active,
+.nav-tab.nav-tab-active {
+    background: var(--mdp-white) !important;
+    color: var(--mdp-primary-d) !important;
+    border-color: var(--mdp-gray-200) !important;
+    border-bottom: 2px solid var(--mdp-white) !important;
+    margin-bottom: -2px !important;
+}
+
+/* -------------------------------------------------------
+   15. Media Library
+------------------------------------------------------- */
+.media-toolbar {
+    direction: rtl !important;
+}
+
+.attachment.details {
+    box-shadow: 0 0 0 3px var(--mdp-primary) !important;
+    border-radius: var(--mdp-radius) !important;
+}
+
+/* -------------------------------------------------------
+   16. Editor Metaboxes (Classic Editor)
+------------------------------------------------------- */
+#submitdiv,
+#publishdiv {
+    background: var(--mdp-white) !important;
+    border: 1px solid var(--mdp-gray-200) !important;
+    border-radius: var(--mdp-radius-md) !important;
+    overflow: hidden !important;
+    box-shadow: var(--mdp-shadow-sm) !important;
+}
+
+#submitdiv h2,
+#publish-div h2 {
+    background: linear-gradient(135deg, var(--mdp-primary-ll) 0%, #f0fdf8 100%) !important;
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: var(--mdp-primary-dd) !important;
+}
+
+#submitdiv .inside {
+    padding: 14px 16px !important;
+    direction: rtl !important;
+}
+
+#publish {
+    background: linear-gradient(135deg, var(--mdp-primary) 0%, var(--mdp-primary-d) 100%) !important;
+    border: none !important;
+    border-radius: var(--mdp-radius-full) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 10px rgba(16,185,129,0.35) !important;
+    transition: var(--mdp-transition) !important;
+}
+
+#publish:hover {
+    background: linear-gradient(135deg, var(--mdp-primary-d) 0%, var(--mdp-primary-dd) 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(16,185,129,0.45) !important;
+}
+
+/* -------------------------------------------------------
+   17. Tags / Category Meta Boxes
+------------------------------------------------------- */
+.tagsdiv .jaxtag input[type="text"],
+.tagsdiv .newtag {
+    border-radius: var(--mdp-radius-full) !important;
+}
+
+.tagsdiv-tag {
+    background: var(--mdp-primary-ll) !important;
+    border: 1px solid var(--mdp-primary-l) !important;
+    border-radius: var(--mdp-radius-full) !important;
+    color: var(--mdp-primary-dd) !important;
+    padding: 3px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+/* -------------------------------------------------------
+   18. Screen Options & Help Panel
+------------------------------------------------------- */
+#screen-options-wrap,
+#contextual-help-wrap {
+    background: var(--mdp-white) !important;
+    border-radius: 0 0 var(--mdp-radius-md) var(--mdp-radius-md) !important;
+    border: 1px solid var(--mdp-gray-200) !important;
+    border-top: none !important;
+    box-shadow: var(--mdp-shadow-sm) !important;
+    direction: rtl !important;
+}
+
+#screen-options-wrap .submit {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* -------------------------------------------------------
+   19. Upload / Media Buttons
+------------------------------------------------------- */
+.upload-flash-bypass a,
+.wp-media-buttons a {
+    border-radius: var(--mdp-radius-sm) !important;
+}
+
+/* -------------------------------------------------------
+   20. Admin Footer
+------------------------------------------------------- */
+#wpfooter {
+    border-top: 1px solid var(--mdp-gray-200) !important;
+    color: var(--mdp-gray-400) !important;
+    font-size: 12px !important;
+    padding: 14px 24px !important;
+    direction: rtl !important;
+    text-align: right !important;
+    background: var(--mdp-white) !important;
+}
+
+#footer-thankyou,
+#footer-upgrade {
+    color: var(--mdp-gray-400) !important;
+}
+
+#footer-upgrade a {
+    color: var(--mdp-primary-d) !important;
+    font-weight: 600 !important;
+}
+
+/* -------------------------------------------------------
+   21. Loading / Spinner
+------------------------------------------------------- */
+.spinner {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='20' fill='none' stroke='%2310b981' stroke-width='4' stroke-linecap='round' stroke-dasharray='80 20'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.8s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E") no-repeat center !important;
+    background-size: contain !important;
+}
+
+/* -------------------------------------------------------
+   22. Gutenberg / Block Editor Overrides
+------------------------------------------------------- */
+.editor-styles-wrapper {
+    direction: rtl !important;
+}
+
+.edit-post-header {
+    border-bottom: 1px solid var(--mdp-gray-200) !important;
+}
+
+.editor-post-publish-panel__header,
+.components-panel__header {
+    background: var(--mdp-primary-ll) !important;
+    border-bottom: 1px solid var(--mdp-primary-l) !important;
+    direction: rtl !important;
+}
+
+.components-panel__body-toggle {
+    color: var(--mdp-gray-700) !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.components-panel__body.is-opened {
+    border-bottom: 1px solid var(--mdp-gray-200) !important;
+}
+
+.components-button.is-primary {
+    background: linear-gradient(135deg, var(--mdp-primary) 0%, var(--mdp-primary-d) 100%) !important;
+    border: none !important;
+    border-radius: var(--mdp-radius-full) !important;
+    box-shadow: 0 2px 8px rgba(16,185,129,0.30) !important;
+    transition: var(--mdp-transition) !important;
+}
+
+.components-button.is-primary:hover {
+    background: linear-gradient(135deg, var(--mdp-primary-d) 0%, var(--mdp-primary-dd) 100%) !important;
+    box-shadow: 0 4px 14px rgba(16,185,129,0.45) !important;
+}
+
+.components-input-control__input,
+.components-text-control__input,
+.components-select-control__input,
+.components-textarea-control__textarea {
+    border-radius: var(--mdp-radius) !important;
+    border: 1.5px solid var(--mdp-gray-300) !important;
+    direction: rtl !important;
+}
+
+.components-input-control__input:focus,
+.components-text-control__input:focus,
+.components-select-control__input:focus {
+    border-color: var(--mdp-primary) !important;
+    box-shadow: var(--mdp-shadow-focus) !important;
+}
+
+/* -------------------------------------------------------
+   23. Color Scheme Override (disable WordPress defaults)
+------------------------------------------------------- */
+.wp-admin .wp-core-ui .button-primary:focus {
+    box-shadow: var(--mdp-shadow-focus) !important;
+}
+
+/* -------------------------------------------------------
+   24. Misc Helpers
+------------------------------------------------------- */
+.clear { clear: both !important; }
+
+.subsubsub {
+    direction: rtl !important;
+    text-align: right !important;
+    margin-bottom: 12px !important;
+}
+
+.subsubsub a {
+    color: var(--mdp-gray-600) !important;
+    border-radius: var(--mdp-radius-sm) !important;
+    padding: 3px 8px !important;
+    transition: var(--mdp-transition-fast) !important;
+}
+
+.subsubsub a:hover,
+.subsubsub a.current {
+    color: var(--mdp-primary-d) !important;
+    background: var(--mdp-primary-ll) !important;
+}
+
+/* Bulk actions */
+.bulkactions select {
+    border-radius: var(--mdp-radius) !important;
+    margin-left: 6px !important;
+    margin-right: 0 !important;
+}
+
+/* Search form */
+.search-form {
+    direction: rtl !important;
+}
+
+/* -------------------------------------------------------
+   25. Scrollbar Styling (Webkit)
+------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--mdp-gray-100) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--mdp-primary-l) !important;
+    border-radius: var(--mdp-radius-full) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--mdp-primary) !important;
+}
+
+/* -------------------------------------------------------
+   26. Selection Color
+------------------------------------------------------- */
+::selection {
+    background: var(--mdp-primary-l) !important;
+    color: var(--mdp-primary-dd) !important;
+}
+
+/* -------------------------------------------------------
+   27. Responsive
+------------------------------------------------------- */
+@media screen and (max-width: 960px) {
+    #wpcontent {
+        margin-right: 0 !important;
+        padding: 14px !important;
+    }
+
+    .wrap h1 {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #wpcontent {
+        padding: 10px !important;
+    }
+}
