@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
-
 /* ========================================================
    Medical Dashboard Pro — Login Page Stylesheet
    تم سبز پزشکی | صفحه ورود مدرن | راست‌چین
@@ -31,7 +29,7 @@ html {
 body.login {
     background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%) !important;
     direction: rtl !important;
-    font-family: 'Vazirmatn', sans-serif !important;
+    font-family: 'Vazir', 'Vazirmatn', sans-serif !important;
     min-height: 100vh;
     display: flex !important;
     flex-direction: column !important;
@@ -42,7 +40,7 @@ body.login {
 }
 
 body.login * {
-    font-family: 'Vazirmatn', sans-serif !important;
+    font-family: 'Vazir', 'Vazirmatn', sans-serif !important;
 }
 
 /* Decorative circles */

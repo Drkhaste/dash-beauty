@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
-
 /* ========================================================
    Medical Dashboard Pro — Admin Stylesheet
    تم سبز پزشکی | راست‌چین | مدرن و تمیز
@@ -52,7 +50,7 @@
     --mdp-transition-fast: all 0.14s ease;
 
     --mdp-sidebar-w:     260px;
-    --mdp-font:          'Vazirmatn', sans-serif;
+    --mdp-font:          'Vazir', 'Vazirmatn', 'Tahoma', sans-serif;
 }
 
 /* -------------------------------------------------------
